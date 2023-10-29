@@ -1,7 +1,7 @@
 const sql = require("mssql")
 
 const getAllLists = (req, res) => {
-    const { userId } = req.body;
+    const userId = req.query.userId;
     if (!userId) return res.status(401).json({ message: "userId requried" })
 
     var request = new sql.Request()
