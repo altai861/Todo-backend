@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     var request = new sql.Request();
        
     // Query the database and get the records
-    request.query('select * from Хүмүүс where year(төрсөнӨдөр) > 2005', function (err, recordset) {
+    request.query('select * from Tasks where userId=1', function (err, recordset) {
         if (err) {
             console.error(err);
             res.status(500).json({ error: 'Database query error' });

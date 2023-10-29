@@ -16,7 +16,7 @@ const getAllTask = (req, res) => {
 }
 
 const getMyDay = (req, res) => {
-    const { userId } = req.body
+    const userId = req.query.userId
     if (!userId) return res.status(401).json({ message: "userId required" });
 
     var request = new sql.Request()
@@ -38,7 +38,7 @@ const getMyDay = (req, res) => {
 }
 
 const getImportantTasks = (req, res) => {
-    const { userId } = req.body
+    const userId = req.query.userId
     if (!userId) return res.status(401).json({ message: "userId required" });
 
     var request = new sql.Request()
@@ -53,7 +53,7 @@ const getImportantTasks = (req, res) => {
 }
 
 const getPlannedTasks = (req, res) => {
-    const { userId } = req.body
+    const userId = req.query.userId
     if (!userId) return res.status(401).json({ message: "userId required" });
 
     var request = new sql.Request()
@@ -68,7 +68,8 @@ const getPlannedTasks = (req, res) => {
 }
 
 const getListSpecificTasks = (req, res) => {
-    const { userId, listId } = req.body
+    const userId = req.query.userId
+    const listId = req.query.listId
     if (!userId || !listId) return res.status(401).json({ message: "userId and listId required" });
 
     var request = new sql.Request()

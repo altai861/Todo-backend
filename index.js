@@ -4,6 +4,7 @@ var app = express();
 var sql = require("mssql");
 const { logger } = require("./middleware/logger")
 const path = require("path");
+const cors = require('cors')
 
 var dbConnected = false
 
@@ -38,8 +39,23 @@ app.use(function (req, res, next) {
     }
 });
 
-app.use(logger);
+const allowedOrigins = [
+    'http://localhost:5173'
+  ];
+  
+  // Configure the CORS middleware
+  const corsOptions = {
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true); // Allow the request
+      } else {
+        callback(new Error('Not allowed by CORS')); // Deny the request
+      }
+    },
+  };
 
+app.use(logger);
+app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
