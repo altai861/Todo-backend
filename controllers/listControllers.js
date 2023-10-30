@@ -52,7 +52,8 @@ const updateList = (req, res) => {
 }
 
 const deleteList = (req, res) => {
-    const { userId, listId } = req.body;
+    const userId = req.query.userId;
+    const listId = req.query.listId;
     if (!userId || !listId) return res.status(401).json({ message: "userId and listId are required to delete" });
 
     var request = new sql.Request();

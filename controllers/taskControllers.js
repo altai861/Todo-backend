@@ -169,7 +169,7 @@ const updateTask = (req, res) => {
 }
 
 const deleteTask = (req, res) => {
-    const { taskId } = req.body;
+    const taskId = req.query.taskId;
     if (!taskId) return res.status(401).json({ message: "taskId is required to delete" });
 
     var request = new sql.Request();

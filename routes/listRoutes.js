@@ -11,6 +11,7 @@ router.route("/")
 router.route("/")
     .patch(listControllers.updateList)
 
-router.delete(listControllers.deleteList)
+router.route("/")
+    .delete(listControllers.deleteList)
 
 module.exports = router;
